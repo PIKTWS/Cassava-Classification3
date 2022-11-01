@@ -82,7 +82,7 @@ if submit:
             
             heatmap = tf.reduce_mean(tf.multiply(pooled_grads, last_conv_layer), axis=-1)
 
-        heatmap = heatmap[0, :, :].copy()
+        heatmap = heatmap[0, :, :]
         heatmap = np.maximum(heatmap, 0)
         heatmap /= np.max(heatmap)
 
