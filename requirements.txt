@@ -1,5 +1,4 @@
 opencv-python-headless
+streamlit-image-comparison
 tensorflow
 keras
-streamlit
-streamlit-image-comparison
