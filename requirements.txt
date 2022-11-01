@@ -1,5 +1,4 @@
 tensorflow
 keras
 opencv-python
-opencv
 python-opencv
