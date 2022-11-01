@@ -44,7 +44,12 @@ if submit:
         elif temp == 4 :
             result = "Healthy"    
 # Process-Classification
-
+        st.write("CBB: ",preds[0])
+        st.write("CBSD: ",preds[1])
+        st.write("CGM: ",preds[2])
+        st.write("CMD: ",preds[3])
+        st.write("Healthy: ",preds[4])
+        
         if result == "Healthy":
                 st.balloons()
                 st.write("")
