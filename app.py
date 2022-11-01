@@ -31,7 +31,7 @@ if submit:
 
         preds = model.predict(img)
         preds = np.array(preds).tolist()
-        temp = preds.index(max(preds))
+        temp = preds.index(max(preds[0]))
         result =""
         if temp == 0 :
             result = "Cassava Bacterial Blight (CBB) [โรคใบไหม้]"
