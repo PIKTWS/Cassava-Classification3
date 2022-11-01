@@ -1,5 +1,5 @@
 # Install library
-from tensorflow.keras.preprocessing import image
+from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
 import numpy as np
