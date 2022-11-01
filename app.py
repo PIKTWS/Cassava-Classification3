@@ -15,6 +15,8 @@ st.title('🌿Cassava Classification🍃')
 
 # Upload file
 file = st.file_uploader("Please upload Cassava Leaf", type=["jpg"])
+if file is not None:
+        st.image(file,use_column_width=True)
 # Function
 def test_model(file,img_shape=512):
     """
