@@ -1,6 +1,8 @@
 # Install library
 from keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications.vgg16 import preprocess_input, decode_predictions
 import tensorflow as tf
+import cv2
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -19,6 +21,7 @@ file = st.file_uploader("Please upload Cassava Leaf", type=["jpg"])
 if file is not None:
         st.image(file,use_column_width=True)
 
+# Process-Classification
 submit = st.button('Predict')
 if submit:
     if file is None:
@@ -31,6 +34,7 @@ if submit:
         img = tf.expand_dims(img, axis=0)
 
         preds = model.predict(img)
+        temp_preds = preds
         preds = np.array(preds[0]).tolist()
         for i in range(0,len(preds)):
                 preds[i] = preds[i]*100
@@ -46,7 +50,9 @@ if submit:
             result = "Cassava Mosaic Disease (CMD) [โรคใบด่าง]"
         elif temp == 4 :
             result = "Healthy"    
-# Process-Classification
+
+
+# Result
         st.write("Cassava Bacterial Blight (CBB) [โรคใบไหม้]: ",preds[0])
         st.write("Cassava Brown Streak Disease (CBSD) [โรคใบจุดสีน้ำตาล]: ",preds[1])
         st.write("Cassava Green Mottle (CGM) [ติดเชื้อไวรัสมอสสีเขียว]: ",preds[2])
@@ -57,8 +63,6 @@ if submit:
             
 
         #st.bar_chart(chart_data)
-
-
         if result == "Healthy":
                 st.balloons()
                 st.write("")
@@ -67,5 +71,27 @@ if submit:
             st.error("Oh no! this leaf is "+result)
             st.info("You Should ........")
 
+        with tf.GradientTape() as tape:
+            last_conv_layer = model.get_layer('top_conv')
+            iterate = tf.keras.models.Model([model.inputs], [model.output, last_conv_layer.output])
+            model_out, last_conv_layer = iterate(x)
+            class_out = model_out[:, np.argmax(model_out[0])]
+            grads = tape.gradient(class_out, last_conv_layer)
+            pooled_grads = K.mean(grads, axis=(0, 1, 2))
+            
+            heatmap = tf.reduce_mean(tf.multiply(pooled_grads, last_conv_layer), axis=-1)
 
-# Result
+        heatmap = heatmap[0, :, :].copy()
+        heatmap = np.maximum(heatmap, 0)
+        heatmap /= np.max(heatmap)
+
+        img = cv2.imread(image)
+        INTENSITY = 0.5
+
+        heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
+
+        heatmap = cv2.applyColorMap(np.uint8(255*heatmap), cv2.COLORMAP_JET)
+
+        img = heatmap * INTENSITY + img
+
+        st.image(img,use_column_width=True)
