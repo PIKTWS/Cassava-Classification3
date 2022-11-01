@@ -39,33 +39,6 @@ def test_model(file,img_shape=512):
         return "Cassava Mosaic Disease (CMD) [โรคใบด่าง]"
     elif temp == 4 :
         return "Healthy"
-
-    """
-    # Read in the image
-    img = tf.io.read_file(file)
-    # Decode it into a tensor
-    img = tf.image.decode_jpeg(img)
-    # Resize the image
-    img = tf.image.resize(img, [img_shape, img_shape])
-    # Rescale the image (get all values between 0 and 1)
-    img = img/255.
-    final = "no result"
-    #** Change size & dimention image
-    img = tf.expand_dims(img, axis=0)
-    resultOfModel = model.predict(img)
-    result = resultOfModel.argmax() 
-    if result == 0:
-        final = "Cassava Bacterial Blight"
-    elif result == 1:
-        final = "Cassava Brown Streak Disease"
-    elif result == 3:
-        final = "Cassava Mosaic Disease"
-    elif result == 4:
-        final = "Healthy"
-    else :
-        final = "ระบุไม่ได้"
-    return final
-    """
 # Process-Classification
 
 submit = st.button('Predict')
