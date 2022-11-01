@@ -3,7 +3,6 @@ from keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
 import numpy as np
 import streamlit as st
-from PIL import Image
 
 # load model
 model = tf.keras.models.load_model("./EffNetB0_model.h5")
@@ -24,7 +23,7 @@ def test_model(file,img_shape=512):
     (224, 224, 3).
     """
     # Read in the image
-    img = Image.open(file)
+    img = tf.io.read_file(file)
     # Decode it into a tensor
     img = tf.image.decode_jpeg(img)
     # Resize the image
