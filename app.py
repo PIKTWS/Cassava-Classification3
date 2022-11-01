@@ -89,7 +89,7 @@ if submit:
         img = image
         INTENSITY = 0.5
 
-        heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
+        heatmap = cv2.resize(heatmap, (img.width, img.height))
 
         heatmap = cv2.applyColorMap(np.uint8(255*heatmap), cv2.COLORMAP_JET)
 
