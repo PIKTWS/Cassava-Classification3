@@ -30,8 +30,9 @@ if submit:
         img = tf.expand_dims(img, axis=0)
 
         preds = model.predict(img)
-        preds = np.array(preds[0]).tolist()
-        temp = preds.index(max(preds))
+        preds = np.array(preds).tolist()
+        preds = preds*100
+        temp = preds.index(max(preds[0]))
         result =""
         if temp == 0 :
             result = "Cassava Bacterial Blight (CBB) [โรคใบไหม้]"
@@ -50,6 +51,13 @@ if submit:
         st.write("CMD: ",preds[3])
         st.write("Healthy: ",preds[4])
         
+        chart_data = pd.DataFrame(
+            rows = [preds[0],preds[1],preds[2],preds[3],preds[4]],
+            columns=["CBB", "CBSD", "CGM","CMD","Healthy"])
+
+        st.bar_chart(chart_data)
+
+
         if result == "Healthy":
                 st.balloons()
                 st.write("")
