@@ -6,7 +6,7 @@ import streamlit as st
 
 
 # load model
-model = tf.keras.models.load_model("./EffNetB0_model.h5")
+model = tf.keras.models.load_model("./EffNetB5_512_8(A1)")
 
 # Make up page
 st.image("./pics/cropped-logo.png", caption=None, width=200, use_column_width=None, clamp=False, channels='RGB',output_format='auto')
@@ -14,15 +14,15 @@ st.title('🌿Cassava Classification🍃')
 
 
 # Upload file
-file = st.file_uploader("Please upload Cassava Leaf", type=["jpg", "png"])
+file = st.file_uploader("Please upload Cassava Leaf", type=["jpg"])
 # Function
-def test_model(img_shape=512):
+def test_model(file,img_shape=512):
     """
     Reads in an image from filename, turns it into a tensor and reshapes into
     (224, 224, 3).
     """
     # Read in the image
-    img = tf.io.read_file(file)
+    img = file
     # Decode it into a tensor
     img = tf.image.decode_jpeg(img)
     # Resize the image
@@ -52,7 +52,7 @@ if submit:
     if file is None:
         st.text("Please upload an image file")
     else :      
-        result = test_model()
+        result = test_model(file)
         if result == "Healthy":
                 st.balloons()
                 st.write("")
