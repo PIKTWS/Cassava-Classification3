@@ -94,5 +94,5 @@ if submit:
         heatmap = cv2.applyColorMap(np.uint8(255*heatmap), cv2.COLORMAP_JET)
 
         img = heatmap * INTENSITY + img
-
-        st.image(img,use_column_width=True)
+        st.image(opencv_img, clamp=True, channels='BGR',use_column_width=True)
+        #st.image(img,use_column_width=True)
