@@ -31,7 +31,8 @@ if submit:
 
         preds = model.predict(img)
         preds = np.array(preds).tolist()
-        preds = preds*100
+        for i in range(0,len(preds)):
+                preds[i] = preds[i]*100
         temp = preds.index(max(preds[0]))
         result =""
         if temp == 0 :
