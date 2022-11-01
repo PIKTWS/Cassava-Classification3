@@ -95,6 +95,12 @@ if submit:
 
         img = heatmap * INTENSITY + img
         cv2.imwrite('temporary.jpg', img)
-        st.image('temporary.jpg',use_column_width=True)
+        #st.image('temporary.jpg',use_column_width=True)
+        image_comparison(
+            img1=file,
+            img2="temporary.jpg",
+            label1="Original",
+            label2="Heatmap",
+        )
         #st.image(opencv_img, clamp=True, channels='BGR',use_column_width=True)
         #st.image(img,use_column_width=True)
