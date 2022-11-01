@@ -1,5 +1,6 @@
 # Install library
 from keras.preprocessing import image
+from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
 import numpy as np
@@ -40,8 +41,8 @@ def test_model(file,img_shape=512):
         return "Cassava Mosaic Disease (CMD) [โรคใบด่าง]"
     elif temp == 4 :
         return "Healthy"
-# Process-Classification
 
+# Result
 submit = st.button('Predict')
 if submit:
     if file is None:
@@ -55,6 +56,3 @@ if submit:
         else:
             st.error("Oh no! this leaf is "+result)
             st.info("You Should ........")
-
-
-# Result
