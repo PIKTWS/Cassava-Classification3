@@ -74,7 +74,7 @@ if submit:
         with tf.GradientTape() as tape:
             last_conv_layer = model.get_layer('top_conv')
             iterate = tf.keras.models.Model([model.inputs], [model.output, last_conv_layer.output])
-            model_out, last_conv_layer = iterate(x)
+            model_out, last_conv_layer = iterate(image)
             class_out = model_out[:, np.argmax(model_out[0])]
             grads = tape.gradient(class_out, last_conv_layer)
             pooled_grads = K.mean(grads, axis=(0, 1, 2))
