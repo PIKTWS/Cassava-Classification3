@@ -22,6 +22,25 @@ def test_model(file,img_shape=512):
     Reads in an image from filename, turns it into a tensor and reshapes into
     (224, 224, 3).
     """
+    x = image.img_to_array(file)
+    x = np.expand_dims(x, axis=0)
+    x = preprocess_input(x)
+
+    preds = model.predict(x)
+    preds = np.array(preds).tolist()
+    temp = preds.index(max(preds))
+    if temp == 0 :
+        return "Cassava Bacterial Blight (CBB) [โรคใบไหม้]"
+    elif temp == 1 :
+        return "Cassava Brown Streak Disease (CBSD) [โรคใบจุดสีน้ำตาล]"
+    elif temp == 2 :
+        return "Cassava Green Mottle (CGM) [ติดเชื้อไวรัสมอสสีเขียว]"
+    elif temp == 3 :
+        return "Cassava Mosaic Disease (CMD) [โรคใบด่าง]"
+    elif temp == 4 :
+        return "Healthy"
+
+    """
     # Read in the image
     img = tf.io.read_file(file)
     # Decode it into a tensor
@@ -46,6 +65,7 @@ def test_model(file,img_shape=512):
     else :
         final = "ระบุไม่ได้"
     return final
+    """
 # Process-Classification
 
 submit = st.button('Predict')
