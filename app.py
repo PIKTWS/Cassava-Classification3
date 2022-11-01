@@ -1,6 +1,7 @@
 # Install library
 from keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications.vgg16 import preprocess_input, decode_predictions
+from tensorflow.keras import backend as K
 import tensorflow as tf
 import cv2
 import numpy as np
