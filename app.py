@@ -53,7 +53,7 @@ if submit:
         st.write("CMD: ",preds[3])
         st.write("Healthy: ",preds[4])
         
-        chart_data = pd.DataFrame({"CBB":preds[0],"CBSD":preds[1],"CGM"preds[2],"CMD":preds[3],"Healthy":preds[4]})
+        chart_data = pd.DataFrame({"CBB":preds[0],"CBSD":preds[1],"CGM":preds[2],"CMD":preds[3],"Healthy":preds[4]})
             
 
         st.bar_chart(chart_data)
