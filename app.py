@@ -22,11 +22,18 @@ def test_model(file,img_shape=512):
     Reads in an image from filename, turns it into a tensor and reshapes into
     (224, 224, 3).
     """
-    x = image.img_to_array(file)
-    x = np.expand_dims(x, axis=0)
-    x = preprocess_input(x)
+        # Resize the image
+    img = tf.image.decode_jpeg(file)
+    img = tf.image.resize(img, [img_shape, img_shape])
+    # Rescale the image (get all values between 0 and 1)
+    img = img/255.
+    #** Change size & dimention image
 
-    preds = model.predict(x)
+    # img = tf.expand_dims(img, axis=0)
+    # x = image.img_to_array(file)
+    # x = np.expand_dims(x, axis=0)
+    # x = preprocess_input(x)
+    preds = model.predict(img)
     preds = np.array(preds).tolist()
     temp = preds.index(max(preds))
     if temp == 0 :
