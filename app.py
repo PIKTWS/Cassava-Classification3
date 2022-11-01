@@ -6,7 +6,7 @@ import streamlit as st
 
 
 # load model
-model = tf.keras.models.load_model("./EffNetB5_512_8(A1)")
+model = tf.keras.models.load_model("./EffNetB0_model.h5")
 
 # Make up page
 st.image("./pics/cropped-logo.png", caption=None, width=200, use_column_width=None, clamp=False, channels='RGB',output_format='auto')
