@@ -47,16 +47,16 @@ if submit:
         elif temp == 4 :
             result = "Healthy"    
 # Process-Classification
-        st.write("CBB: ",preds[0])
-        st.write("CBSD: ",preds[1])
-        st.write("CGM: ",preds[2])
-        st.write("CMD: ",preds[3])
+        st.write("Cassava Bacterial Blight (CBB) [โรคใบไหม้]: ",preds[0])
+        st.write("Cassava Brown Streak Disease (CBSD) [โรคใบจุดสีน้ำตาล]: ",preds[1])
+        st.write("Cassava Green Mottle (CGM) [ติดเชื้อไวรัสมอสสีเขียว]: ",preds[2])
+        st.write("Cassava Mosaic Disease (CMD) [โรคใบด่าง]: ",preds[3])
         st.write("Healthy: ",preds[4])
         
-        chart_data = pd.DataFrame(data = {"CBB":round(preds[0],2),"CBSD":round(preds[1],2),"CGM":round(preds[2],2),"CMD":round(preds[3],2),"Healthy":round(preds[4],2)}, index=[0])
+        #chart_data = pd.DataFrame(data = {"CBB":round(preds[0],2),"CBSD":round(preds[1],2),"CGM":round(preds[2],2),"CMD":round(preds[3],2),"Healthy":round(preds[4],2)}, index=[0])
             
 
-        st.bar_chart(chart_data)
+        #st.bar_chart(chart_data)
 
 
         if result == "Healthy":
