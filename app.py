@@ -30,8 +30,8 @@ if submit:
         img = tf.expand_dims(img, axis=0)
 
         preds = model.predict(img)
-        preds = np.array(preds).tolist()
-        temp = preds.index(max(preds[0]))
+        preds = np.array(preds[0]).tolist()
+        temp = preds.index(max(preds))
         result =""
         if temp == 0 :
             result = "Cassava Bacterial Blight (CBB) [โรคใบไหม้]"
