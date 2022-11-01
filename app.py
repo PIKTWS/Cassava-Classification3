@@ -86,7 +86,7 @@ if submit:
         heatmap = np.maximum(heatmap, 0)
         heatmap /= np.max(heatmap)
 
-        img = cv2.imread(image)
+        img = image
         INTENSITY = 0.5
 
         heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
