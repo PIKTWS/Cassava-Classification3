@@ -1,9 +1,9 @@
 # Install library
+from tensorflow.keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
 import numpy as np
 import streamlit as st
-from tensorflow.keras.preprocessing import image
 
 # load model
 model = tf.keras.models.load_model("./EffNetB0_model.h5")
