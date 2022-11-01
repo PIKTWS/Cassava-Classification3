@@ -98,7 +98,7 @@ if submit:
         cv2.imwrite('temporary.jpg', img)
         #st.image('temporary.jpg',use_column_width=True)
         image_comparison(
-            img1=file,
+            img1=Image.open(file),
             img2="temporary.jpg",
             label1="Original",
             label2="Heatmap",
