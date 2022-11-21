@@ -98,7 +98,7 @@ if submit:
         #st.image('temporary.jpg',use_column_width=True)
         image_comparison(
             #img1=Image.open(file),
-            img1="temporary.jpg"
+            img1="temporary.jpg",
             img2="temporary.jpg",
             label1="Original",
             label2="Heatmap",
