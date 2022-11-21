@@ -1,4 +1,5 @@
 # Install library
+# Install
 from keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications.vgg16 import preprocess_input, decode_predictions
 from streamlit_image_comparison import image_comparison
@@ -83,7 +84,7 @@ if submit:
             
             heatmap = tf.reduce_mean(tf.multiply(pooled_grads, last_conv_layer), axis=-1)
 
-        heatmap = heatmap[0, :, :]
+        heatmap = heatmap[0, :, :] 
         heatmap = np.maximum(heatmap, 0)
         heatmap /= np.max(heatmap)
 
