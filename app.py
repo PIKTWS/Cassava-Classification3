@@ -2,6 +2,7 @@
 from keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications.vgg16 import preprocess_input, decode_predictions
 from streamlit_image_comparison import image_comparison
+from streamlit_image_comparison import sahi
 from tensorflow.keras import backend as K
 import tensorflow as tf
 import cv2
