@@ -71,7 +71,7 @@ if submit:
                 st.success('Good News! This leaf is healthy')
         else:
             st.error("Oh no! this leaf is "+result)
-            st.info("You Should ........")
+            #st.info("You Should ........")
 
         with tf.GradientTape() as tape:
             last_conv_layer = model.get_layer('top_conv')
