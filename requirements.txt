@@ -1,5 +1,5 @@
 opencv-python-headless
 streamlit==1.4.0
-streamlit-image-comparison==0.0.2
+streamlit-image-comparison
 tensorflow
 keras
