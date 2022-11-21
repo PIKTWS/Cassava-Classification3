@@ -55,11 +55,6 @@ if submit:
 
 
 # Result
-        st.write("Cassava Bacterial Blight (CBB) [โรคใบไหม้]: ",preds[0])
-        st.write("Cassava Brown Streak Disease (CBSD) [โรคใบจุดสีน้ำตาล]: ",preds[1])
-        st.write("Cassava Green Mottle (CGM) [ติดเชื้อไวรัสมอสสีเขียว]: ",preds[2])
-        st.write("Cassava Mosaic Disease (CMD) [โรคใบด่าง]: ",preds[3])
-        st.write("Healthy: ",preds[4])
         
         #chart_data = pd.DataFrame(data = {"CBB":round(preds[0],2),"CBSD":round(preds[1],2),"CGM":round(preds[2],2),"CMD":round(preds[3],2),"Healthy":round(preds[4],2)}, index=[0])
             
@@ -72,7 +67,12 @@ if submit:
         else:
             st.error("Oh no! this leaf is "+result)
             #st.info("You Should ........")
-
+        st.write("Cassava Bacterial Blight (CBB) [โรคใบไหม้]: ",preds[0])
+        st.write("Cassava Brown Streak Disease (CBSD) [โรคใบจุดสีน้ำตาล]: ",preds[1])
+        st.write("Cassava Green Mottle (CGM) [ติดเชื้อไวรัสมอสสีเขียว]: ",preds[2])
+        st.write("Cassava Mosaic Disease (CMD) [โรคใบด่าง]: ",preds[3])
+        st.write("Healthy: ",preds[4])
+        
         with tf.GradientTape() as tape:
             last_conv_layer = model.get_layer('top_conv')
             iterate = tf.keras.models.Model([model.inputs], [model.output, last_conv_layer.output])
