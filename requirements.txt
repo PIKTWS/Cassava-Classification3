@@ -3,3 +3,5 @@ streamlit==1.4.0
 streamlit-image-comparison==0.0.2
 tensorflow
 keras
+torch==1.10.2+cpu
+torchvision==0.11.3+cpu
